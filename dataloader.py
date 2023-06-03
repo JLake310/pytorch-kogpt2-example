@@ -6,8 +6,7 @@ class GPTDataset(Dataset):
     def __init__(self, tokenizer, file_path):
         data = pd.read_csv(file_path)
         concats = [
-            label + "|" + text
-            for label, text in zip(data["label_text"], data["input_text"])
+            label + "|" + text for label, text in zip(data["target"], data["text"])
         ]
         self.item = tokenizer(
             concats,
